@@ -20,3 +20,12 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## 引入 apollo 
+[@nuxtjs/apollo机票](https://www.npmjs.com/package/@nuxtjs/apollo)
+
+npm install --save @nuxtjs/apollo
+
+npm install --save graphql-tag
+
+添加配置 nuxt.config.js
