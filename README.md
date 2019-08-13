@@ -29,3 +29,10 @@ npm install --save @nuxtjs/apollo
 npm install --save graphql-tag
 
 添加配置 nuxt.config.js
+
+## 引入 mavonEditor
+[mavonEditor机票](https://github.com/hinesboy/mavonEditor)
+
+npm install mavon-editor --save
+
+

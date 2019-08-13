@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "element-ui": "^2.4.11",
     "graphql-tag": "^2.10.1",
+    "mavon-editor": "^2.7.5",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
