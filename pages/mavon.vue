@@ -1,7 +1,7 @@
 <template>
   <div class="mavonEditor">
     <no-ssr>
-      <mavon-editor :toolbars="markdownOption" v-model="handbook" :toolbarsFlag="true" :subfield="false" :defaultOpen="'preview'" :navigation="true"/>
+      <mavon-editor  v-model="handbook" :toolbarsFlag="true" :subfield="false" :defaultOpen="'preview'" :navigation="true"/>
     </no-ssr>
   </div>
 </template>
@@ -9,9 +9,9 @@
 export default {
   data() {
     return {
-    //   markdownOption: {
-    //     bold: true, // 粗体
-    //   },
+      markdownOption: {
+        bold: true, // 粗体
+      },
       handbook: "#### how to use mavonEditor in nuxt.js"
     };
   }

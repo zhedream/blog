@@ -1,15 +1,55 @@
 <template>
   <el-container>
-    <el-header>Header</el-header>
+    <el-header style="background-color: rgb(84, 92, 100);">
+      <!-- 布局 -->
+      <div class="container">
+        <!-- 范围 -->
+        <TopMenu />
+      </div>
+    </el-header>
     <el-main>
-      <nuxt />
+      <div class="container">
+        <div class="left" style>
+          <nuxt />
+        </div>
+        <div class="right" style>
+          <div class="card">
+            <info />
+          </div>
+          <div class="card">
+            <type />
+          </div>
+          <div class="card">
+            <tag />
+          </div>
+        </div>
+      </div>
     </el-main>
-    <el-footer>Footer</el-footer>
+    <el-footer>底部</el-footer>
   </el-container>
 </template>
+  底部
+
+<script>
+import TopMenu from "~/layouts/top-menu.vue";
+import Info from "~/components/index/info.vue";
+import Type from "~/components/index/type.vue";
+import Tag from "~/components/index/tag.vue";
+
+export default {
+  components: {
+    TopMenu,
+    Info,
+    Type,
+    Tag
+  }
+};
+</script>
 
 <style>
+@import "../assets/css/default.css";
 html {
+  height: 100%;
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
@@ -19,6 +59,21 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+body {
+  height: 100%;
+  background-color: #f4f4f4;
+}
+.left {
+  float: left;
+  width: 68%;
+}
+.right {
+  float: right;
+  width: 26%;
+}
+.right .card{
+  margin-bottom: 18px;
 }
 
 *,

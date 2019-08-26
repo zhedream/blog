@@ -1,18 +1,25 @@
 <template>
-  <div class="container">
-    <div>HELLO NUXT</div>
-    <div>ADD nuxtjs-apollo</div>
-    <ul>
-      <li v-for="user in users" :key="user.id">
-        <span>{{user.id}}</span>
-        <span>{{user.username}}</span>
-      </li>
-    </ul>
+  <div class="index">
+    <el-card class="box-card">
+      <post />
+    </el-card>
+    <el-card class="box-card">
+      <post />
+    </el-card>
+    <el-card class="box-card">
+      <post />
+    </el-card>
+    <el-card class="box-card">
+      <post />
+    </el-card>
+    <el-card class="box-card">
+      <post />
+    </el-card>
   </div>
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
+import Post from "~/components/post.vue";
 import users from "~/apollo/queries/users";
 
 export default {
@@ -23,7 +30,7 @@ export default {
     }
   },
   components: {
-    Logo
+    Post
   },
   head: {
     title: "Users with Apollo"
@@ -32,12 +39,11 @@ export default {
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.index {
+  width: 100%;
+  background: white;
+}
+.index .box-card{
+  margin-bottom: 20px;
 }
 </style>
