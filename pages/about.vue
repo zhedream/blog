@@ -1,7 +1,6 @@
 <template>
   <div class="">
-    <div>关于我</div>
-    <div>ABOUT2</div>
+    <img src="~assets/images/about_info.png" alt="">
 
   </div>
 </template>

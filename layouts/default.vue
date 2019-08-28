@@ -25,10 +25,9 @@
         </div>
       </div>
     </el-main>
-    <el-footer>底部</el-footer>
+    <el-footer></el-footer>
   </el-container>
 </template>
-  底部
 
 <script>
 import TopMenu from "~/layouts/top-menu.vue";

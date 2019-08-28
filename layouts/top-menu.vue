@@ -1,34 +1,21 @@
 <template>
   <el-menu
-    :default-active="$route.name"
+    :default-active="$route.path"
     class="el-menu-demo aa"
     mode="horizontal"
     @select="handleSelect"
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
+    :router="true"
   >
-    <el-menu-item index="index">
-      <a href="/" target>首页</a>
-    </el-menu-item>
-    <el-menu-item index="mavon">
-      <a href="/mavon" target>编辑器</a>
-    </el-menu-item>
-    <el-menu-item index="category">
-      <a href="/category" target>分类</a>
-    </el-menu-item>
-    <el-menu-item index="archive">
-      <a href="/archive" target>归档</a>
-    </el-menu-item>
-    <el-menu-item index="tag">
-      <a href="/tag" target>标签</a>
-    </el-menu-item>
-    <el-menu-item index="article-random">
-      <a href="/article/random" target>随便看看</a>
-    </el-menu-item>
-    <el-menu-item index="about">
-      <a href="/about" target>关于我</a>
-    </el-menu-item>
+    <el-menu-item index="/">首页</el-menu-item>
+    <!-- <el-menu-item index="/mavon">编辑器</el-menu-item> -->
+    <!-- <el-menu-item index="/category">分类</el-menu-item> -->
+    <el-menu-item index="/archive">归档</el-menu-item>
+    <!-- <el-menu-item index="/tag">标签</el-menu-item> -->
+    <el-menu-item index="/article/random">随便看看</el-menu-item>
+    <el-menu-item index="/about">关于我</el-menu-item>
   </el-menu>
 </template>
 
@@ -59,6 +46,11 @@ export default {
 </script>
 
 <style >
+el-menu-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 </style>
 
 

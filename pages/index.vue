@@ -1,39 +1,28 @@
 <template>
   <div class="index">
-    <el-card class="box-card">
-      <post />
+    <el-card v-for="(item, index) in articles" :key="index" class="box-card">
+      <post :article="item"/>
     </el-card>
-    <el-card class="box-card">
-      <post />
-    </el-card>
-    <el-card class="box-card">
-      <post />
-    </el-card>
-    <el-card class="box-card">
-      <post />
-    </el-card>
-    <el-card class="box-card">
-      <post />
-    </el-card>
+
   </div>
 </template>
 
 <script>
 import Post from "~/components/post.vue";
-import users from "~/apollo/queries/users";
+import articles from "~/apollo/queries/articles.gql";
 
 export default {
   apollo: {
-    users: {
+    articles: {
       prefetch: true,
-      query: users
+      query: articles
     }
   },
   components: {
     Post
   },
   head: {
-    title: "Users with Apollo"
+    title: "主页"
   }
 };
 </script>
