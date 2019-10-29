@@ -38,7 +38,7 @@ npm install mavon-editor --save
 ## 部署
 https://www.jianshu.com/p/413e2a5f30b2
 npm run
-pm2 start npm --name nuxt -- start
+pm2 start npm --name blog -- start
 pm2 start npm run start --name=blog
 
 
