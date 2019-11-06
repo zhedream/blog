@@ -16,9 +16,9 @@
           <div class="card">
             <info />
           </div>
-          <div class="card">
+          <!-- <div class="card">
             <type />
-          </div>
+          </div> -->
           <div class="card">
             <tag />
           </div>

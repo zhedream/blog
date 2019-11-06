@@ -56,7 +56,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://127.0.0.1:7200'
+        httpEndpoint: '/admin/graphql', // 代理  http://127.0.0.1:7200/ 
       }
     }
   },
