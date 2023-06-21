@@ -17,7 +17,7 @@
     "element-ui": "^2.4.11",
     "graphql-tag": "^2.10.1",
     "mavon-editor": "^2.7.5",
-    "nuxt": "^2.0.0"
+    "nuxt": "^3.4.3"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.27",
