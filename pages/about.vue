@@ -1,17 +1,14 @@
 <template>
   <div class="">
-    <img src="~assets/images/about_info.png" alt="">
+    <img src="~/assets/images/about_info.png" alt="关于者之梦">
 
   </div>
 </template>
 
-<script>
-
-export default {
-
-};
-</script>
-
 <style>
-
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 </style>

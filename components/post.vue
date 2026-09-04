@@ -26,19 +26,9 @@
 </template>
 
 <script setup lang="ts">
-type ArticleSummary = {
-  id: string;
-  title: string;
-  desc?: string | null;
-  clickCount?: number | null;
-  createdAt?: string | null;
-  type?: { name?: string | null } | null;
-  tags?: Array<{ id: string; name?: string | null }>;
-};
+import type { ArticleSummary } from "~/types/article";
 
-withDefaults(defineProps<{ article?: ArticleSummary }>(), {
-  article: () => ({ id: "", title: "" })
-});
+defineProps<{ article: ArticleSummary }>();
 </script>
 
 <style>

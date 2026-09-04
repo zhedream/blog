@@ -14,13 +14,14 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ["~/assets/css/default.css", "~/assets/editor.md/css/editormd.css"],
+  css: ["~/assets/css/default.css"],
 
   modules: ["@element-plus/nuxt"],
 
   runtimeConfig: {
+    graphqlUpstream: "http://127.0.0.1:7200/graphql",
     public: {
-      graphqlEndpoint: "/admin/graphql"
+      graphqlEndpoint: "/api/graphql"
     }
   },
 

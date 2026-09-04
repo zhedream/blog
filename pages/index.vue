@@ -1,36 +1,39 @@
 <template>
   <div class="index">
-    <el-card v-for="(item, index) in articles" :key="index" class="box-card">
-      <post :article="item"/>
-    </el-card>
-
+    <el-alert v-if="error" title="文章加载失败，请稍后重试" type="error" show-icon />
+    <el-skeleton :loading="status === 'pending'" :rows="5" animated>
+      <el-empty v-if="!articles.length" description="暂无文章" />
+      <el-card v-for="item in articles" :key="item.id" class="box-card">
+        <PostCard :article="item" />
+      </el-card>
+    </el-skeleton>
   </div>
 </template>
 
-<script>
-import Post from "~/components/post.vue";
-import articles from "~/apollo/queries/articles";
+<script setup lang="ts">
+import { useApolloClient } from "@vue/apollo-composable";
+import articlesQuery from "~/apollo/queries/articles";
+import PostCard from "~/components/post.vue";
+import type { ArticleSummary } from "~/types/article";
 
-export default {
-  apollo: {
-    articles: {
-      prefetch: true,
-      query: articles
-    }
+useHead({ title: "主页" });
+
+const { resolveClient } = useApolloClient();
+const { data: articles, status, error } = await useAsyncData(
+  "articles",
+  async () => {
+    const { data } = await resolveClient().query<{ articles: ArticleSummary[] }>({
+      query: articlesQuery
+    });
+    return data.articles;
   },
-  components: {
-    Post
-  },
-  head: {
-    title: "主页"
-  }
-};
+  { default: () => [] }
+);
 </script>
 
-<style>
+<style scoped>
 .index {
   width: 100%;
-  background: white;
 }
 .index .box-card{
   margin-bottom: 20px;
