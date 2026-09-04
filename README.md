@@ -10,7 +10,10 @@
 
 ## 本地运行
 
+先启动 `blogPrisma`，确认 GraphQL API 位于 `http://127.0.0.1:7200/graphql`，然后：
+
 ```bash
+cp .env.example .env
 npm ci
 npm run dev
 ```
@@ -30,9 +33,21 @@ npm test
 npm run typecheck
 npm run build
 npm run security:check
+npm run smoke:api
 ```
 
 `security:check` 会阻止 CVE-2026-69152 受影响的 `brace-expansion` 版本及非官方 npm registry 下载地址进入锁文件。
+
+`smoke:api` 会读取 `GRAPHQL_ENDPOINT`，实际查询文章、分类和标签，用于部署前确认前后端契约及数据库连接。
+
+## 页面
+
+- `/`：已发布文章列表
+- `/archive`：文章归档
+- `/category`、`/category/:id`：分类及分类文章
+- `/tag`、`/tag/:id`：标签及标签文章
+- `/article/:id`：文章详情
+- `/article/random`：随机已发布文章
 
 ## 部署
 

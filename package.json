@@ -15,6 +15,7 @@
     "generate": "nuxt generate",
     "test": "vitest run",
     "typecheck": "nuxt typecheck",
+    "smoke:api": "node scripts/smoke-api.mjs",
     "security:check": "node scripts/check-dependencies.mjs",
     "postinstall": "nuxt prepare"
   },
