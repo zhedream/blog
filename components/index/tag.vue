@@ -1,9 +1,11 @@
 <template>
   <el-card class="box-card">
-    <div slot="header" class="clearfix">
+    <template #header>
+      <div class="card-header">
       <span>热门标签</span>
-      <el-button style="float: right; padding: 3px 0" type="text">全部标签</el-button>
-    </div>
+      <el-button link>全部标签</el-button>
+      </div>
+    </template>
     <div class="tags">
       <el-tag class="tag">标签一(11)</el-tag>
       <el-tag class="tag" type="success">标签二(21)</el-tag>
@@ -23,16 +25,13 @@
   margin-bottom: 18px;
 }
 
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-.clearfix:after {
-  clear: both;
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 /*  */
 .box-card .tags .tag {
-  margin-bottom: 5px;
+  margin: 0 5px 5px 0;
 }
 </style>

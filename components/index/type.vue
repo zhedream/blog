@@ -1,9 +1,11 @@
 <template>
   <el-card class="box-card">
-    <div slot="header" class="clearfix">
+    <template #header>
+      <div class="card-header">
       <span>文章分类</span>
-      <el-button style="float: right; padding: 3px 0" type="text">全部分类</el-button>
-    </div>
+      <el-button link>全部分类</el-button>
+      </div>
+    </template>
     <div v-for="o in 4" :key="o" class="text item">{{'列表内容 ' + o }}</div>
   </el-card>
 </template>
@@ -17,13 +19,10 @@
   margin-bottom: 18px;
 }
 
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-.clearfix:after {
-  clear: both;
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 </style>

@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ["~/assets/editor.md/css/editormd.css"],
+  css: ["~/assets/css/default.css", "~/assets/editor.md/css/editormd.css"],
 
   modules: ["@element-plus/nuxt"],
 
