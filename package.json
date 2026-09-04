@@ -13,7 +13,9 @@
     "build": "nuxt build",
     "preview": "nuxt preview",
     "generate": "nuxt generate",
+    "test": "vitest run",
     "typecheck": "nuxt typecheck",
+    "security:check": "node scripts/check-dependencies.mjs",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
@@ -28,6 +30,7 @@
   "devDependencies": {
     "@element-plus/nuxt": "1.1.5",
     "typescript": "5.9.3",
+    "vitest": "5.0.0",
     "vue-tsc": "3.3.11"
   }
 }
