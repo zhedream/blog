@@ -2,6 +2,7 @@ import { Kind, type DocumentNode } from "graphql";
 import { describe, expect, it } from "vitest";
 import articleQuery from "../apollo/queries/article";
 import articlesQuery from "../apollo/queries/articles";
+import archiveQuery from "../apollo/queries/archive";
 import {
   publishedArticleCountQuery,
   randomArticleQuery
@@ -21,6 +22,10 @@ function operationName(document: DocumentNode) {
 describe("GraphQL documents", () => {
   it("keeps the article list operation", () => {
     expect(operationName(articlesQuery)).toBe("getArticles");
+  });
+
+  it("keeps the archive operation", () => {
+    expect(operationName(archiveQuery)).toBe("getArchiveArticles");
   });
 
   it("keeps the article detail operation", () => {

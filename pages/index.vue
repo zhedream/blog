@@ -23,7 +23,8 @@ const { data: articles, status, error } = await useAsyncData(
   "articles",
   async () => {
     const { data } = await resolveClient().query<{ articles: ArticleSummary[] }>({
-      query: articlesQuery
+      query: articlesQuery,
+      variables: { where: { isPublished: true } }
     });
     return data.articles;
   },
