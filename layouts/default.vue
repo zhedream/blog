@@ -10,7 +10,7 @@
     <el-main>
       <div class="container">
         <div class="left" style>
-          <nuxt />
+          <slot />
         </div>
         <div class="right" style>
           <div class="card">

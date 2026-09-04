@@ -9,7 +9,7 @@
 
 <script>
 import Post from "~/components/post.vue";
-import articles from "~/apollo/queries/articles.gql";
+import articles from "~/apollo/queries/articles";
 
 export default {
   apollo: {

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import article from "~/apollo/queries/article.gql";
+import article from "~/apollo/queries/article";
 export default {
   apollo: {
     article: {
