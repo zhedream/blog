@@ -15,6 +15,9 @@
             <InfoCard />
           </div>
           <div class="card">
+            <TypeCard />
+          </div>
+          <div class="card">
             <TagCard />
           </div>
         </aside>
@@ -27,6 +30,7 @@
 <script setup lang="ts">
 import InfoCard from "~/components/index/info.vue";
 import TagCard from "~/components/index/tag.vue";
+import TypeCard from "~/components/index/type.vue";
 import TopMenu from "~/components/TopMenu.vue";
 </script>
 
