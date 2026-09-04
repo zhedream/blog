@@ -3,6 +3,10 @@ import { describe, expect, it } from "vitest";
 import articleQuery from "../apollo/queries/article";
 import articlesQuery from "../apollo/queries/articles";
 import {
+  publishedArticleCountQuery,
+  randomArticleQuery
+} from "../apollo/queries/randomArticle";
+import {
   categoriesQuery,
   categoryQuery,
   tagsQuery,
@@ -30,5 +34,10 @@ describe("GraphQL documents", () => {
       operationName(tagsQuery),
       operationName(tagQuery)
     ]).toEqual(["getCategories", "getCategory", "getTags", "getTag"]);
+  });
+
+  it("keeps the random article operations", () => {
+    expect(operationName(publishedArticleCountQuery)).toBe("getPublishedArticleCount");
+    expect(operationName(randomArticleQuery)).toBe("getRandomArticle");
   });
 });
