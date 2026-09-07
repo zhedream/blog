@@ -1,52 +1,40 @@
 <template>
-  <el-container>
-    <el-header style="background-color: rgb(84, 92, 100);">
-      <!-- 布局 -->
+  <el-container class="site-shell">
+    <el-header class="site-header">
       <div class="container">
-        <!-- 范围 -->
         <TopMenu />
       </div>
     </el-header>
     <el-main>
       <div class="container">
-        <div class="left" style>
-          <nuxt />
-        </div>
-        <div class="right" style>
+        <main class="left">
+          <slot />
+        </main>
+        <aside class="right">
           <div class="card">
-            <info />
+            <InfoCard />
           </div>
-          <!-- <div class="card">
-            <type />
-          </div> -->
           <div class="card">
-            <tag />
+            <TypeCard />
           </div>
-        </div>
+          <div class="card">
+            <TagCard />
+          </div>
+        </aside>
       </div>
     </el-main>
-    <el-footer></el-footer>
+    <el-footer />
   </el-container>
 </template>
 
-<script>
-import TopMenu from "~/layouts/top-menu.vue";
-import Info from "~/components/index/info.vue";
-import Type from "~/components/index/type.vue";
-import Tag from "~/components/index/tag.vue";
-
-export default {
-  components: {
-    TopMenu,
-    Info,
-    Type,
-    Tag
-  }
-};
+<script setup lang="ts">
+import InfoCard from "~/components/index/info.vue";
+import TagCard from "~/components/index/tag.vue";
+import TypeCard from "~/components/index/type.vue";
+import TopMenu from "~/components/TopMenu.vue";
 </script>
 
 <style>
-@import "../assets/css/default.css";
 html {
   height: 100%;
   font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -63,6 +51,12 @@ body {
   height: 100%;
   background-color: #f4f4f4;
 }
+.site-shell {
+  min-height: 100vh;
+}
+.site-header {
+  background-color: #545c64;
+}
 .left {
   float: left;
   width: 68%;
@@ -75,6 +69,18 @@ body {
   margin-bottom: 18px;
 }
 
+@media (max-width: 900px) {
+  .left,
+  .right {
+    float: none;
+    width: 100%;
+  }
+
+  .right {
+    margin-top: 20px;
+  }
+}
+
 *,
 *:before,
 *:after {
@@ -82,32 +88,4 @@ body {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
 </style>

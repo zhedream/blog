@@ -1,15 +1,14 @@
 <template>
   <el-row>
-      <el-card :body-style="{ padding: '0px' }">
+      <el-card :body-style="{ padding: '0' }">
         <img
           src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
           class="image"
         />
         <div style="padding: 14px;">
-          <span>者之梦</span>
-          <div class="bottom clearfix">
-            <time class="time">{{ currentDate }}</time>
-            <el-button type="text" class="button">操作按钮</el-button>
+          <strong>者之梦</strong>
+          <div class="bottom">
+            <span class="subtitle">记录开发与生活</span>
           </div>
         </div>
       </el-card>
@@ -17,7 +16,7 @@
 </template>
 
 <style>
-.time {
+.subtitle {
   font-size: 13px;
   color: #999;
 }
@@ -27,33 +26,9 @@
   line-height: 12px;
 }
 
-.button {
-  padding: 0;
-  float: right;
-}
-
 .image {
   width: 100%;
   display: block;
 }
 
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-
-.clearfix:after {
-  clear: both;
-}
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      currentDate: new Date()
-    };
-  }
-};
-</script>

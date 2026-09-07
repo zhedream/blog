@@ -1,62 +1,34 @@
 <template>
   <div class="post">
     <div class="head">
-      <h1 class="title">{{article.title}}</h1>
+      <h2 class="title">{{ article.title }}</h2>
       <div class="icon">
-        <i class="el-icon-user">&nbsp;者之梦</i>
-        <i class="el-icon-time">&nbsp;{{article.createdAt}}</i>
-        <i class="el-icon-folder">&nbsp;{{article.type?article.type.name:'其他'}}</i>
-        <i class="el-icon-view">&nbsp;{{article.clickCount?article.clickCount:0}}</i>
+        <span>作者：者之梦</span>
+        <span>时间：{{ article.createdAt }}</span>
+        <span>分类：{{ article.type?.name || "其他" }}</span>
+        <span>阅读：{{ article.clickCount || 0 }}</span>
       </div>
     </div>
     <div v-html="article.desc" class="content"></div>
     <div class="footer">
-      <div class="tags" v-if="article.tags">
+      <div v-if="article.tags?.length" class="tags">
         <el-tag
+          v-for="item in article.tags"
+          :key="item.id"
           class="tag"
-          size="mini"
-          v-for="(item, index) in article.tags"
-          :key="index"
+          size="small"
           type="info"
-        >{{item.name}}</el-tag>
+        >{{ item.name }}</el-tag>
       </div>
-      <el-button type="danger" class="read" @click="linkto('/article/'+article.id)">
-        <a :href="'/article/'+article.id">阅读全文</a>
-      </el-button>
+      <el-button type="danger" class="read" @click="navigateTo(`/article/${article.id}`)">阅读全文</el-button>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    article: {
-      type: Object,
-      default: {}
-    }
-  },
-  computed: {
-    aaa() {
-      return "hello";
-    }
-  },
-  data() {
-    return {
-      markdownOption: {
-        bold: true // 粗体
-      },
-      handbook: "hello"
-    };
-  },
-  created() {
-    console.log(this.hello);
-  },
-  methods: {
-    linkto(path) {
-      location.href = path;
-    }
-  }
-};
+<script setup lang="ts">
+import type { ArticleSummary } from "~/types/article";
+
+defineProps<{ article: ArticleSummary }>();
 </script>
 
 <style>
@@ -66,6 +38,14 @@ export default {
 }
 .post .head .icon i {
   margin-right: 5px;
+}
+.post .head .icon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  color: #909399;
+  font-size: 13px;
 }
 .post .content {
   margin-bottom: 10px;

@@ -1,29 +1,61 @@
 <template>
   <el-card class="box-card">
-    <div slot="header" class="clearfix">
-      <span>文章分类</span>
-      <el-button style="float: right; padding: 3px 0" type="text">全部分类</el-button>
-    </div>
-    <div v-for="o in 4" :key="o" class="text item">{{'列表内容 ' + o }}</div>
+    <template #header>
+      <div class="card-header">
+        <span>文章分类</span>
+        <el-button link @click="navigateTo('/category')">全部分类</el-button>
+      </div>
+    </template>
+    <el-alert v-if="error" title="分类加载失败" type="error" :closable="false" />
+    <button
+      v-for="category in categories"
+      :key="category.id"
+      class="category-link"
+      type="button"
+      @click="navigateTo(`/category/${category.id}`)"
+    >
+      <span>{{ category.name || "未命名" }}</span>
+      <el-text type="info">{{ category.articles.length }}</el-text>
+    </button>
+    <el-text v-if="status !== 'pending' && !categories.length && !error" type="info">暂无分类</el-text>
   </el-card>
 </template>
 
+<script setup lang="ts">
+import { useApolloClient } from "@vue/apollo-composable";
+import { categoriesQuery } from "~/apollo/queries/taxonomies";
+import type { TaxonomySummary } from "~/types/taxonomy";
+
+const { resolveClient } = useApolloClient();
+const { data: categories, status, error } = await useAsyncData(
+  "taxonomy:categories",
+  async () => {
+    const { data } = await resolveClient().query<{ categories: TaxonomySummary[] }>({
+      query: categoriesQuery
+    });
+    return data.categories;
+  },
+  { default: () => [] }
+);
+</script>
+
 <style>
-.text {
-  font-size: 14px;
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.item {
-  margin-bottom: 18px;
-}
-
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-}
-.clearfix:after {
-  clear: both;
+.category-link {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
 }
 
 </style>
