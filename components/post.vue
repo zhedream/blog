@@ -1,67 +1,37 @@
 <template>
-  <div class="post">
-    <div class="head">
-      <h2 class="title">{{ article.title }}</h2>
-      <div class="icon">
-        <span>作者：者之梦</span>
-        <span>时间：{{ article.createdAt }}</span>
-        <span>分类：{{ article.type?.name || "其他" }}</span>
-        <span>阅读：{{ article.clickCount || 0 }}</span>
-      </div>
+  <article class="post post-summary">
+    <div class="post-kicker">
+      <span>{{ article.type?.name || "随笔" }}</span
+      ><span class="post-date">{{ formatDate(article.createdAt) }}</span>
     </div>
+    <h2 class="title">
+      <NuxtLink :to="`/article/${article.id}`">{{ article.title }}</NuxtLink>
+    </h2>
     <div v-html="article.desc" class="content"></div>
     <div class="footer">
-      <div v-if="article.tags?.length" class="tags">
-        <el-tag
-          v-for="item in article.tags"
-          :key="item.id"
-          class="tag"
-          size="small"
-          type="info"
-        >{{ item.name }}</el-tag>
+      <div class="tags">
+        <span v-for="item in article.tags" :key="item.id" class="summary-tag"
+          ># {{ item.name }}</span
+        >
       </div>
-      <el-button type="danger" class="read" @click="navigateTo(`/article/${article.id}`)">阅读全文</el-button>
+      <NuxtLink :to="`/article/${article.id}`" class="text-link read"
+        >阅读全文 <span aria-hidden="true">↗</span></NuxtLink
+      >
     </div>
-  </div>
+  </article>
 </template>
-
 <script setup lang="ts">
 import type { ArticleSummary } from "~/types/article";
-
 defineProps<{ article: ArticleSummary }>();
+function formatDate(value: string) {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? value
+    : new Intl.DateTimeFormat("zh-CN", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        timeZone: "UTC",
+      }).format(date);
+}
 </script>
-
-<style>
-.post .head {
-  margin-bottom: 10px;
-    text-align: center;
-}
-.post .head .icon i {
-  margin-right: 5px;
-}
-.post .head .icon {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  color: #909399;
-  font-size: 13px;
-}
-.post .content {
-  margin-bottom: 10px;
-}
-
-.post .footer {
-  clear: both;
-  overflow: hidden;
-}
-.post .footer .tags {
-  float: left;
-}
-.post .footer .tags .tag {
-  margin-right: 5px;
-}
-.post .footer .read {
-  float: right;
-}
-</style>
