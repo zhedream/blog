@@ -24,6 +24,11 @@ export default defineNuxtConfig({
     graphqlUpstream: "http://127.0.0.1:7200/graphql",
     public: {
       graphqlEndpoint: "/api/graphql",
+      icp: {
+        miit: "闽ICP备18000031号-2",
+        police: "苏公网安备 32132202000498号",
+        policeCode: "32132202000498",
+      },
     },
   },
 

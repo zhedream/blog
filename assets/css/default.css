@@ -407,6 +407,27 @@ nav a.active {
   padding-inline: 10px;
   color: #b5beb0;
 }
+.site-footer {
+  flex-wrap: wrap;
+}
+.site-beian {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 18px;
+  padding-top: 6px;
+}
+.site-footer .site-beian a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.site-footer .site-beian a:hover {
+  color: #53695a;
+}
 .post .content img,
 .post .content video {
   max-width: 100%;
